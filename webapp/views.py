@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpRequest, Http404
 from .models import Category
 
@@ -9,8 +9,5 @@ def index(request: HttpRequest) -> HttpResponse:
 
 
 def detail(request: HttpRequest, category_id: int) -> HttpResponse:
-    try:
-        category = Category.objects.get(id=category_id)
-    except Category.DoesNotExist as e:
-        raise Http404("Category does not exist") from e
+    category = get_object_or_404(Category, pk=category_id)
     return render(request, "webapp/details.html", {"category": category})
