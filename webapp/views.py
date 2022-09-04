@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
+from .models import Category
 
 # Create your views here.
 def index(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("Hello, world. You're at the placemik index.")
+    categories = Category.objects.all()
+    output = ", ".join([c.name for c in categories])
+    return HttpResponse(output)
 
 
 def detail(request: HttpRequest, product_id: int) -> HttpResponse:
