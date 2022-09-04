@@ -5,8 +5,7 @@ from .models import Category
 # Create your views here.
 def index(request: HttpRequest) -> HttpResponse:
     categories = Category.objects.all()
-    output = ", ".join([c.name for c in categories])
-    return HttpResponse(output)
+    return render(request, "webapp/index.html", {"categories": categories})
 
 
 def detail(request: HttpRequest, product_id: int) -> HttpResponse:
