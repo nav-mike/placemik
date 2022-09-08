@@ -1,1 +1,7 @@
 {{ category }}
+
+<ul>
+  {% for product in category.product_set.all %}
+    <li>{{ product.name }}</li>
+  {% endfor %}
+</ul>
