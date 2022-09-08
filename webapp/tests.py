@@ -29,3 +29,11 @@ class CategoryIndexViewTests(TestCase):
         category = create_category("Test Category")
         response = self.client.get(reverse("webapp:index"))
         self.assertQuerysetEqual(response.context["categories"], [category])
+
+
+class CategoryDetailViewTests(TestCase):
+    def test_category_detail(self):
+        category = create_category("Test Category")
+        response = self.client.get(reverse("webapp:detail", args=(category.id,)))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, category.name)
