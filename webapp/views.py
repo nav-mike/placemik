@@ -1,13 +1,17 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpRequest, Http404
 from .models import Category
-
-# Create your views here.
-def index(request: HttpRequest) -> HttpResponse:
-    categories = Category.objects.all()
-    return render(request, "webapp/index.html", {"categories": categories})
+from django.views import generic
 
 
-def detail(request: HttpRequest, category_id: int) -> HttpResponse:
-    category = get_object_or_404(Category, pk=category_id)
-    return render(request, "webapp/details.html", {"category": category})
+class IndexView(generic.ListView):
+    template_name = "webapp/index.html"
+    context_object_name = "categories"
+
+    def get_queryset(self):
+        return Category.objects.all()
+
+
+class DetailView(generic.DetailView):
+    model = Category
+    template_name = "webapp/details.html"
