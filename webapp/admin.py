@@ -23,6 +23,15 @@ class CategoryAdmin(ImportExportModelAdmin):
     resource_class = CategoryResource
 
 
+class ProductResource(resources.ModelResource):
+    class Meta:
+        model = Product
+
+
+class ProductAdmin(ImportExportModelAdmin):
+    resource_class = ProductResource
+
+
 admin.site.register(CategoryGroup, CategoryGroupAdmin)
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Product)
+admin.site.register(Product, ProductAdmin)
