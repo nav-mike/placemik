@@ -1,5 +1,4 @@
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpRequest, Http404
+from typing import Any, Dict
 from .models import Category
 from django.views import generic
 
@@ -15,3 +14,8 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Category
     template_name = "webapp/details.html"
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context["products"] = self.get_object().product_set.all()
+        return context
