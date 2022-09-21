@@ -1,4 +1,5 @@
 {% load static tailwind_tags %}
+{% load fontawesome_6 %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -6,11 +7,67 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<link rel="shortcut icon" type="image/png" href="{% static 'webapp/images/favicon.ico' %}"/>
+
 		{% tailwind_css %}
+		{% fontawesome_6_static %}
 		<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+		<style>
+			body {
+				font-family: 'Roboto', sans-serif;
+				padding: 0;
+				margin: 0;
+			}
+		</style>
+		{% load static %}
 	</head>
 
-	<body class="bg-gray-50 font-serif leading-normal tracking-normal">
+	<body>
 		{% block content %}{% endblock content %}
+		<div class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white md:grid md:grid-rows-3 md:grid-cols-3 gap-4 items-center p-4">
+			<div class="flex flex-col">
+				<h3 class="text-2xl">For customers</h3>
+				<a class="hover:underline cursor-pointer">How it works</a>
+				<a class="hover:underline cursor-pointer">Customer security</a>
+				<a class="hover:underline cursor-pointer">Payments</a>
+				<a class="hover:underline cursor-pointer">How to use</a>
+				<a class="hover:underline cursor-pointer">Account registration</a>
+			</div>
+			<div class="flex flex-col">
+				<h3 class="text-2xl">About</h3>
+				<a class="hover:underline cursor-pointer">About Placemik</a>
+				<a class="hover:underline cursor-pointer">News</a>
+				<a class="hover:underline cursor-pointer">FAQ</a>
+				<a class="hover:underline cursor-pointer">Support</a>
+				<a class="hover:underline cursor-pointer">Terms of use</a>
+			</div>
+			<div class="flex flex-col h-full">
+				<h3 class="text-2xl">For partners</h3>
+				<a class="hover:underline cursor-pointer">How to be a seller</a>
+				<a class="hover:underline cursor-pointer">Rules</a>
+				<a class="hover:underline cursor-pointer">Login</a>
+			</div>
+			<div class="col-span-2 flex flex-col">
+				<div>Subscribe to our newsletter:</div>
+				<form class="flex gap-4 pt-2 w-full">
+					<input type="text" placeholder="Enter your email here" class="max-w-sm w-96 bg-transparent border-white placeholder-white placeholder:italic" />
+					<button type="submit" class="bg-white text-purple-500 px-6">Subscribe</button>
+				</form>
+			</div>
+			<div class="flex-col gap-4">
+				<div class="text-base my-4">We are in social networks</div>
+				<div class="flex gap-10">
+					<a href="vk.com" class="hover:text-gray-200" target="_blank">{% fa6_icon 'vk' 'fab fa-2xl' %}</a>
+					<a href="instagram.com" class="hover:text-gray-200" target="_blank">{% fa6_icon 'instagram' 'fab fa-2xl' %}</a>
+					<a href="fb.com" class="hover:text-gray-200" target="_blank">{% fa6_icon 'facebook' 'fab fa-2xl' %}</a>
+				</div>
+			</div>
+			<img class="col-span-2" src="{% static 'webapp/images/logo.png' %}" alt="Placemik" />
+			<div>© PlaceMik.ru, 2021</div>
+		</div>
 	</body>
 </html>
