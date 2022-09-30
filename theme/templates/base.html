@@ -28,14 +28,40 @@
 
 	<body>
 		<div class="bg-white p-4 flex gap-4 w-full flex-col">
-			<div class="flex justify-end gap-10">
-				<div>
-					<select>
-						<option>Customers</option>
-					</select>
-					<select>
-						<option>Partners</option>
-					</select>
+			<div class="flex justify-end gap-10 items-center">
+				<div class="flex flex-row gap-4 justify-between">
+					<div x-data="{ show: false }">
+						<div
+						  class="hover:cursor-pointer hover:underline"
+							x-on:click="show = !show"
+							@click.outside="show = false"
+						>
+							Customers {% fa6_icon 'chevron-down' 'fa-solid' %}
+						</div>
+						<div class="flex flex-col absolute bg-white p-4" x-show="show" x-transition>
+							<h3 class="text-2xl">For customers</h3>
+							<a class="hover:underline cursor-pointer">How it works</a>
+							<a class="hover:underline cursor-pointer">Customer security</a>
+							<a class="hover:underline cursor-pointer">Payments</a>
+							<a class="hover:underline cursor-pointer">How to use</a>
+							<a class="hover:underline cursor-pointer">Account registration</a>
+						</div>
+					</div>
+					<div x-data="{ show: false }">
+						<div
+							class="hover:cursor-pointer hover:underline"
+							x-on:click="show = !show"
+							@click.outside="show = false"
+						>
+							Partners {% fa6_icon 'chevron-down' 'fa-solid' %}
+						</div>
+						<div class="flex flex-col absolute bg-white p-4" x-show="show" x-transition>
+							<h3 class="text-2xl">For partners</h3>
+							<a class="hover:underline cursor-pointer">How to be a seller</a>
+							<a class="hover:underline cursor-pointer">Rules</a>
+							<a class="hover:underline cursor-pointer">Login</a>
+						</div>
+					</div>
 					<a>FAQ</a>
 				</div>
 				<div class="flex items-center gap-4">
