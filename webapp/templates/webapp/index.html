@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block title %}My amazing blog{% endblock %}
 
 {% block content %}
-  <div class="container mx-auto">
-    <section class="flex items-center justify-center h-screen">
-      <h1 class="text-5xl">Django + Tailwind = ❤️</h1>
-    </section>
+  <div class="container mx-auto my-4">
+    <div class="flex flex-row gap-4">
+      <img src="{% static 'webapp/images/baners/baner1.png' %}" />
+      <div class="flex flex-col gap-4">
+        <img class="flex-1" src="{% static 'webapp/images/baners/baner2.png' %}" />
+        <img src="{% static 'webapp/images/baners/baner3.png' %}" />
+      </div>
+    </div>
+
   </div>
 {% endblock %}
