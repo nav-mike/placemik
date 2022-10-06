@@ -1,14 +1,15 @@
 from typing import Any, Dict
-from .models import Category
+from .models import Category, Product
 from django.views import generic
 
 
-class IndexView(generic.ListView):
+class IndexView(generic.TemplateView):
     template_name = "webapp/index.html"
-    context_object_name = "categories"
 
-    def get_queryset(self):
-        return Category.objects.all()
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context["deals"] = Product.objects.all()[:12]
+        return context
 
 
 class DetailView(generic.DetailView):

@@ -5,14 +5,37 @@
 {% block title %}My amazing blog{% endblock %}
 
 {% block content %}
-  <div class="container mx-auto my-4">
+  <div class="container mx-auto my-4 flex flex-col gap-4">
     <div class="flex flex-row gap-4">
-      <img src="{% static 'webapp/images/baners/baner1.png' %}" />
+      <img src="{% static 'webapp/images/baners/baner1.png' %}" class="flex-1" />
       <div class="flex flex-col gap-4">
         <img class="flex-1" src="{% static 'webapp/images/baners/baner2.png' %}" />
         <img src="{% static 'webapp/images/baners/baner3.png' %}" />
       </div>
     </div>
 
+    <div class="grid grid-rows-2 grid-cols-6 gap-4">
+      {% for deal in deals %}
+        <div
+          class="drop-shadow-lg bg-white rounded-md flex flex-col gap-4 cursor-pointer"
+          x-data="{ showMenu: false }"
+          @mouseover="showMenu = true"
+          @mouseover.away="showMenu = false"
+        >
+          <a class="w-full p-4 h-[10rem]">
+            <img src="{{ deal.image_url }}" alt="{{ deal.name }}" class="w-full h-full" />
+          </a>
+          <p class="px-4 text-red-500 text-lg">${{ deal.price }}</p>
+          <p class="uppercase px-4 font-bold">{{ deal.name }}</p>
+          <p class="overflow-auto px-4 text-justify flex-1">{{ deal.description }}</p>
+          <button
+            class="py-2 m-4"
+            :class="showMenu ? 'bg-gradient-to-r from-pink-500 hover:from-pink-700 via-purple-500 hover:via-purple-700 to-indigo-500 hover:to-indigo-700 text-white' : 'bg-white text-white'"
+          >
+            To Cart
+          </button>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 {% endblock %}
