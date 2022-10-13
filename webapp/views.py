@@ -9,6 +9,7 @@ class IndexView(generic.TemplateView):
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context["deals"] = Product.objects.all()[:12]
+        context["seenProducts"] = Product.objects.all()[:5]
         return context
 
 
