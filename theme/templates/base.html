@@ -74,8 +74,8 @@
 			</div>
 			<div
 			  class="flex gap-10 justify-between"
-				x-data="{ show: false }"
-				@click.outside="show = false"
+				x-data="{ show: false, subMenu: false }"
+				@click.outside="show = false; subMenu = false"
 			>
 				<div
 				  class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-4 text-white cursor-pointer"
@@ -84,16 +84,29 @@
 					{% fa6_icon 'bars' 'fa-solid fa-xl' %}
 				</div>
 				<div
-				  class="absolute z-10 flex flex-col drop-shadow-lg bg-white p-4 gap-2 w-72"
+				  class="absolute z-10 flex flex-col drop-shadow-lg bg-white p-4 gap-2"
 					x-show="show"
 					x-transition
 				>
 					{% for group in categoryGroups %}
-						<span
-							class="hover:underline cursor-pointer hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-2 hover:text-white"
-						>
-							<a>{{ group.name }}</a>
-						</span>
+						<div class="flex flex-row gap-2">
+							<a
+							  class="hover:underline cursor-pointer hover:bg-gradient-to-r p-2 from-indigo-500 via-purple-500 to-pink-500 hover:text-white self-start"
+								:class="subMenu == {{ group.id }} ? 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white' : ''"
+								@click="subMenu = {{ group.id }}"
+							>
+							  {{ group.name }}
+							</a>
+							<div
+							  class="flex flex-col gap-2 md:grid md:grid-cols-2 lg:grid-cols-3"
+								x-show="subMenu == {{ group.id }}"
+								x-transition
+							>
+								{% for category in group.categories.all %}
+									<a class="hover:underline cursor-pointer">{{ category.name }}</a>
+								{% endfor %}
+							</div>
+						</div>
 					{% endfor %}
 				</div>
 				<img src="{% static 'webapp/images/brand.png' %}" alt="Placemik" />

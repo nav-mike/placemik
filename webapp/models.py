@@ -11,7 +11,11 @@ class CategoryGroup(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=50)
     group = models.ForeignKey(
-        CategoryGroup, on_delete=models.CASCADE, null=True, blank=True
+        CategoryGroup,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="categories",
     )
 
     def __str__(self):

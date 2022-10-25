@@ -10,7 +10,9 @@ class IndexView(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         context["deals"] = Product.objects.all()[:12]
         context["seenProducts"] = Product.objects.all()[:5]
-        context["categoryGroups"] = CategoryGroup.objects.all()
+        context["categoryGroups"] = CategoryGroup.objects.all().prefetch_related(
+            "categories"
+        )
         return context
 
 
