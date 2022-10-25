@@ -72,9 +72,29 @@
 					</select>
 				</div>
 			</div>
-			<div class="flex gap-10 justify-between">
-				<div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-4 text-white">
+			<div
+			  class="flex gap-10 justify-between"
+				x-data="{ show: false }"
+				@click.outside="show = false"
+			>
+				<div
+				  class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-4 text-white cursor-pointer"
+					@click="show = !show"
+				>
 					{% fa6_icon 'bars' 'fa-solid fa-xl' %}
+				</div>
+				<div
+				  class="absolute z-10 flex flex-col drop-shadow-lg bg-white p-4 gap-2 w-72"
+					x-show="show"
+					x-transition
+				>
+					{% for group in categoryGroups %}
+						<span
+							class="hover:underline cursor-pointer hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-2 hover:text-white"
+						>
+							<a>{{ group.name }}</a>
+						</span>
+					{% endfor %}
 				</div>
 				<img src="{% static 'webapp/images/brand.png' %}" alt="Placemik" />
 				<div class="border-purple-500 border-2 flex-1 flex">

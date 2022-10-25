@@ -1,5 +1,5 @@
 from typing import Any, Dict
-from .models import Category, Product
+from .models import Category, CategoryGroup, Product
 from django.views import generic
 
 
@@ -10,6 +10,7 @@ class IndexView(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         context["deals"] = Product.objects.all()[:12]
         context["seenProducts"] = Product.objects.all()[:5]
+        context["categoryGroups"] = CategoryGroup.objects.all()
         return context
 
 
