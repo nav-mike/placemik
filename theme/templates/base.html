@@ -1,6 +1,7 @@
 {% load static tailwind_tags %}
 {% load fontawesome_6 %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 	<head>
     <title>Placemik | {% block title %}{% endblock title %}</title>
@@ -12,7 +13,7 @@
 
 		{% tailwind_css %}
 		{% fontawesome_6_static %}
-		<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+		<script type="text/javascript" src="{% static 'webapp/js/alpine.js' %}"></script>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -23,7 +24,6 @@
 				margin: 0;
 			}
 		</style>
-		{% load static %}
 	</head>
 
 	<body>

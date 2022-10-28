@@ -37,7 +37,10 @@
           </button>
         </div>
       {% endfor %}
-      <a class="col-start-6 self-end p-4 bg-gradient-to-r from-indigo-500 hover:from-indigo-600 via-purple-500 hover:via-purple-600 to-pink-500 hover:to-pink-600 text-white text-center cursor-pointer">
+      <a
+        class="col-start-6 self-end p-4 bg-gradient-to-r from-indigo-500 hover:from-indigo-600 via-purple-500 hover:via-purple-600 to-pink-500 hover:to-pink-600 text-white text-center cursor-pointer"
+        href="{% url 'webapp:products' %}"
+      >
         All Products
       </a>
     </div>
