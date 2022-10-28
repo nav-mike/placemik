@@ -1,6 +1,7 @@
 from typing import Any, Dict
-from .models import Category, CategoryGroup, Product
 from django.views import generic
+
+from webapp.models import CategoryGroup, Product
 
 
 class IndexView(generic.TemplateView):
@@ -13,14 +14,4 @@ class IndexView(generic.TemplateView):
         context["categoryGroups"] = CategoryGroup.objects.all().prefetch_related(
             "categories"
         )
-        return context
-
-
-class DetailView(generic.DetailView):
-    model = Category
-    template_name = "webapp/details.html"
-
-    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
-        context = super().get_context_data(**kwargs)
-        context["products"] = self.get_object().product_set.all()
         return context
