@@ -11,7 +11,7 @@
 
   <div class="grid grid-rows-2 grid-cols-6 gap-4">
     {% for item in products %}
-      {% include "webapp/snippets/product_snippet.html" with image_url=item.image_url name=item.name price=item.price description=item.description %}
+      {% include "webapp/snippets/product_snippet.html" with image_url=item.image_url name=item.name price=item.price description=item.description category=item.category.name %}
     {% endfor %}
   </div>
 
