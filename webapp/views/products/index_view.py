@@ -1,6 +1,4 @@
-from typing import Any, Dict, Optional
 from django.views.generic import ListView
-
 from webapp.models.product import Product
 
 
