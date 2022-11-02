@@ -1,18 +1,20 @@
 <div
-  class="drop-shadow-lg bg-white rounded-md flex flex-col gap-4 cursor-pointer"
+  class="drop-shadow-lg bg-white rounded-md flex flex-col gap-4"
   x-data="{ showMenu: false }"
   @mouseover="showMenu = true"
   @mouseover.away="showMenu = false"
 >
-  <a class="w-full p-4 h-[10rem]">
+  <a class="w-full p-4 h-[10rem] cursor-pointer">
     <img src="{{ image_url }}" alt="{{ name }}" class="w-full h-full" />
   </a>
   <p class="px-4 text-red-500 text-lg">${{ price }}</p>
-  <p class="uppercase px-4 font-bold">{{ name }}</p>
-  <a class="px-4 italic text-sm hover:underline">{{ category }}</a>
+  <p class="uppercase px-4 font-bold">
+    <a class="cursor-pointer hover:underline">{{ name }}</a>
+  </p>
+  <a class="px-4 italic text-sm hover:underline cursor-pointer">{{ category }}</a>
   <p class="overflow-auto px-4 text-justify flex-1">{{ description }}</p>
   <button
-    class="py-2 m-4"
+    class="py-2 m-4 cursor-pointer"
     :class="showMenu ? 'bg-gradient-to-r from-pink-500 hover:from-pink-700 via-purple-500 hover:via-purple-700 to-indigo-500 hover:to-indigo-700 text-white' : 'bg-white text-white'"
   >
     Add to Cart
