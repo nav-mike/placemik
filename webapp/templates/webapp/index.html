@@ -17,7 +17,7 @@
 
     <div class="grid grid-rows-2 grid-cols-6 gap-4">
       {% for deal in deals %}
-        {% include "webapp/snippets/product_snippet.html" with image_url=deal.image_url name=deal.name price=deal.price description=deal.description %}
+        {% include "webapp/snippets/product_snippet.html" with id=deal.id image_url=deal.image_url name=deal.name price=deal.price description=deal.description %}
       {% endfor %}
       <a
         class="col-start-6 self-end p-4 bg-gradient-to-r from-indigo-500 hover:from-indigo-600 via-purple-500 hover:via-purple-600 to-pink-500 hover:to-pink-600 text-white text-center cursor-pointer"
