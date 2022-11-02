@@ -1,13 +1,12 @@
-from typing import Any, Dict
-from django.views.generic import TemplateView
+from typing import Any, Dict, Optional
+from django.views.generic import ListView
 
 from webapp.models.product import Product
 
 
-class IndexView(TemplateView):
+class IndexView(ListView):
     template_name: str = "webapp/products/index.html"
-
-    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
-        context = super().get_context_data(**kwargs)
-        context["products"] = Product.objects.all().prefetch_related("category")
-        return context
+    model = Product
+    context_object_name = "products"
+    queryset = Product.objects.prefetch_related("category")
+    paginate_by: int = 20

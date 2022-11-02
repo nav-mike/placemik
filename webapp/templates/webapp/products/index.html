@@ -14,5 +14,25 @@
       {% include "webapp/snippets/product_snippet.html" with image_url=item.image_url name=item.name price=item.price description=item.description %}
     {% endfor %}
   </div>
+
+  <div class="self-center flex flex-row gap-4 items-center">
+      {% if page_obj.has_previous %}
+        <span class="flex flex-row gap-2">
+          <a class="hover:underline cursor-pointer" href="?page=1">&laquo; First</a>
+          <a class="hover:underline cursor-pointer" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        </span>
+      {% endif %}
+
+      <span>
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+      </span>
+
+      {% if page_obj.has_next %}
+        <span class="flex flex-row gap-2">
+          <a class="hover:underline cursor-pointer" href="?page={{ page_obj.next_page_number }}">Next</a>
+          <a class="hover:underline cursor-pointer" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+        </span>
+      {% endif %}
+  </div>
 </div>
 {% endblock %}
