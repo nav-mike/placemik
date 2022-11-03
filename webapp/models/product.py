@@ -10,7 +10,7 @@ class Product(models.Model):
     image_url = models.CharField(max_length=200)
     rating = models.IntegerField(
         default=0, validators=[MinValueValidator(0), MaxValueValidator(5)]
-    )
+    )  # TODO: remove
     amount = models.IntegerField(default=0)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
