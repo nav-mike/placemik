@@ -1,1 +1,81 @@
-<h1>{{ product.name }}</h1>
+{% extends "base.html" %}
+
+{% load static %}
+{% load fontawesome_6 %}
+{% load get_range %}
+{% load delivery_date %}
+
+{% block title %}Product - {{ product.name }}{% endblock %}
+
+{% block content %}
+<div class="grid grid-cols-2 gap-4 p-4">
+  <img src="{{ product.image_url }}" alt="{{ product.name }}" class="w-full h-full" />
+  <div class="flex flex-col gap-4">
+    <p class="self-end">#{{ product.id }}</p>
+    <h1 class="text-2xl">{{ product.name }}</h1>
+    <div class="flex flex-row justify-between items-center">
+      <div class="flex flex-row justify-between gap-4 items-center">
+        {% for _ in product.rating|get_rating_stars_range %}
+          <i class="fas fa-star text-yellow-400"></i>
+        {% endfor %}
+        {% for _ in product.rating|get_rating_stars_empty_range %}
+          <i class="far fa-star text-yellow-400"></i>
+        {% endfor %}
+        <span>{{ product.reviews.count }} reviews</span>
+      </div>
+
+      {% fa6_icon 'heart' 'far fa-xl' %}
+
+      <div>
+        In stock:
+        <span class="font-bold">{{ product.amount }}</span>
+      </div>
+    </div>
+
+    <div class="p-4 text-red-500 text-xl">${{ product.price }}</div>
+
+    <button class="bg-blue-500 text-white p-2 rounded">Add to cart</button>
+
+    <div class="flex flex-col gap-2">
+      <div class="flex flex-row gap-2 items-center">
+        <span class="font-bold">Your location:</span>
+        <span class="text-sm">Finland</span>
+      </div>
+      <div class="flex flex-row gap-2 items-center">
+        <span class="font-bold">Approximately delivery:</span>
+        <span class="text-sm">{% get_delivery_date %}</span>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <div class="flex flex-row gap-2 items-center">
+        <span class="font-bold">About the product:</span>
+        <span class="text-sm">"{{ product.name }}" has been bought more that n-times.</span>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <div class="flex flex-row gap-2 items-center">
+        <span class="font-bold">About the product:</span>
+        <span class="text-sm">"{{ product.name }}" has been bought more that n-times.</span>
+      </div>
+    </div>
+
+    <div class="flex flex-row items-center justify-evenly">
+      <a class="border-2 border-pink-500 px-10 py-1 rounded-md cursor-pointer hover:bg-slate-100">Description</a>
+      <a class="border-2 border-purple-500 px-10 py-1 rounded-md cursor-pointer hover:bg-slate-100">Reviews</a>
+    </div>
+  </div>
+</div>
+<div class="grid grid-rows-1 grid-cols-5 gap-4 m-4">
+  {% for item in see_also %}
+    <div class="drop-shadow-lg bg-white rounded-md flex flex-row gap-4 w-full justify-between items-center py-4 px-2 h-[10rem]">
+      <img src="{{ item.image_url }}" alt="{{ item.name }}" class="max-h-[50px] flex-1" />
+      <div class="flex flex-col gap-4 max-w-[50%]">
+        <div>{{ item.name }}</div>
+        <div>${{ item.price }}</div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
