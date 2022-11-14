@@ -10,5 +10,7 @@ class DetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["see_also"] = Product.objects.all()[:5]
+        context["see_also"] = Product.objects.filter(
+            category_id=context["product"].category_id
+        ).exclude(id=int(self.kwargs["pk"]))[:5]
         return context
