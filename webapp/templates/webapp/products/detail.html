@@ -69,13 +69,7 @@
 </div>
 <div class="grid grid-rows-1 grid-cols-5 gap-4 m-4">
   {% for item in see_also %}
-    <div class="drop-shadow-lg bg-white rounded-md flex flex-row gap-4 w-full justify-between items-center py-4 px-2 h-[10rem]">
-      <img src="{{ item.image_url }}" alt="{{ item.name }}" class="max-h-[50px] flex-1" />
-      <div class="flex flex-col gap-4 max-w-[50%]">
-        <div>{{ item.name }}</div>
-        <div>${{ item.price }}</div>
-      </div>
-    </div>
+    {% include "webapp/snippets/small_product_snippet.html" with id=item.id image_url=item.image_url name=item.name price=item.price %}
   {% endfor %}
 </div>
 {% endblock %}
