@@ -14,3 +14,8 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def rating(self) -> int:
+        if reviews := self.reviews.all():
+            return sum(review.rating for review in reviews) / reviews.count()
+        return 0
