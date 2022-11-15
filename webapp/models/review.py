@@ -18,7 +18,6 @@ class Review(models.Model):
         blank=False,
         related_name="reviews",
     )
-    text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

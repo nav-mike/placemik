@@ -17,5 +17,5 @@ class Product(models.Model):
 
     def rating(self) -> int:
         if reviews := self.reviews.all():
-            return sum(review.rating for review in reviews) / reviews.count()
+            return int(sum(review.rating for review in reviews) / reviews.count())
         return 0
