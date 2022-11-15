@@ -6,7 +6,7 @@ class DetailView(DetailView):
     template_name: str = "webapp/products/detail.html"
     model = Product
     context_object_name = "product"
-    queryset = Product.objects.prefetch_related("reviews")
+    queryset = Product.objects.prefetch_related("reviews", "order_items")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
