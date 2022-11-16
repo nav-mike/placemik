@@ -86,4 +86,47 @@
   <h2 class="text-2xl">Description</h2>
   <p class="text-justify">{{ product.description }}</p>
 </div>
+
+<div class="flex flex-col gap-4 m-4" id="reviews">
+  <h2 class="text-2xl">Reviews ({{ product.reviews.count }})</h2>
+
+  <form class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2">
+      <label for="rating">Rating</label>
+      <select name="rating" id="rating" class="rounded-md">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5" selected>5</option>
+      </select>
+    </div>
+    <div class="flex flex-col gap-2">
+      <label for="user_name">Name</label>
+      <input type="text" name="user_name" id="user_name" cols="10" rows="3" class="rounded-md" />
+    </div>
+    <div class="flex flex-col gap-2">
+      <label for="review">Review</label>
+      <textarea name="review" id="review" cols="10" rows="3" class="rounded-md"></textarea>
+    </div>
+    <button class="bg-blue-500 text-white p-2 rounded">Submit</button>
+  </form>
+
+  <div class="flex flex-col gap-4">
+    {% for review in product.reviews.all %}
+      <div class="flex flex-col gap-2 drop-shadow-lg bg-white rounded-md p-4">
+        <div class="flex flex-row gap-2 items-center">
+          {% for _ in review.rating|get_rating_stars_range %}
+            <i class="fas fa-star text-yellow-400"></i>
+          {% endfor %}
+          {% for _ in review.rating|get_rating_stars_empty_range %}
+            <i class="far fa-star text-yellow-400"></i>
+          {% endfor %}
+          <span>{{ review.user_name }}</span>
+          <span>{{ review.created_at|date:'Y-m-d' }}</span>
+        </div>
+        <p class="text-justify">{{ review.text }}</p>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}
