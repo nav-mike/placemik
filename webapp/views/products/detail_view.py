@@ -1,5 +1,6 @@
 from django.views.generic import DetailView
 from webapp.models.product import Product
+from webapp.models import Ad
 
 
 class DetailView(DetailView):
@@ -13,4 +14,5 @@ class DetailView(DetailView):
         context["see_also"] = Product.objects.filter(
             category_id=context["product"].category_id
         ).exclude(id=int(self.kwargs["pk"]))[:5]
+        context["ads"] = Ad.objects.order_by("?")[:4]
         return context
