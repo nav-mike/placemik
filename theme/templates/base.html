@@ -40,10 +40,10 @@
 						</div>
 						<div class="flex flex-col absolute bg-white p-4" x-show="show" x-transition>
 							<h3 class="text-2xl">For customers</h3>
-							<a class="hover:underline cursor-pointer">How it works</a>
-							<a class="hover:underline cursor-pointer">Customer security</a>
-							<a class="hover:underline cursor-pointer">Payments</a>
-							<a class="hover:underline cursor-pointer">How to use</a>
+							<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'how-it-works' %}">How it works</a>
+							<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'customer-security' %}">Customer security</a>
+							<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'payments' %}">Payments</a>
+							<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'how-to-use' %}">How to use</a>
 							<a class="hover:underline cursor-pointer">Account registration</a>
 						</div>
 					</div>
@@ -57,12 +57,11 @@
 						</div>
 						<div class="flex flex-col absolute bg-white p-4" x-show="show" x-transition>
 							<h3 class="text-2xl">For partners</h3>
-							<a class="hover:underline cursor-pointer">How to be a seller</a>
-							<a class="hover:underline cursor-pointer">Rules</a>
-							<a class="hover:underline cursor-pointer">Login</a>
+							<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'how-to-be-a-seller' %}">How to be a seller</a>
+							<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'rules' %}">Rules</a>
 						</div>
 					</div>
-					<a>FAQ</a>
+					<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'faq' %}">FAQ</a>
 				</div>
 				<div class="flex items-center gap-4">
 					<a>🇺🇸</a> |
@@ -136,24 +135,23 @@
 			<div class="flex flex-col">
 				<h3 class="text-2xl">For customers</h3>
 				<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'how-it-works' %}">How it works</a>
-				<a class="hover:underline cursor-pointer">Customer security</a>
-				<a class="hover:underline cursor-pointer">Payments</a>
-				<a class="hover:underline cursor-pointer">How to use</a>
+				<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'customer-security' %}">Customer security</a>
+				<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'payments' %}">Payments</a>
+				<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'how-to-use' %}">How to use</a>
 				<a class="hover:underline cursor-pointer">Account registration</a>
 			</div>
 			<div class="flex flex-col">
 				<h3 class="text-2xl">About</h3>
-				<a class="hover:underline cursor-pointer">About Placemik</a>
+				<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'about-placemik' %}">About Placemik</a>
 				<a class="hover:underline cursor-pointer">News</a>
-				<a class="hover:underline cursor-pointer">FAQ</a>
-				<a class="hover:underline cursor-pointer">Support</a>
-				<a class="hover:underline cursor-pointer">Terms of use</a>
+				<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'faq' %}">FAQ</a>
+				<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'support' %}">Support</a>
+				<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'terms-of-use' %}">Terms of use</a>
 			</div>
 			<div class="flex flex-col h-full">
 				<h3 class="text-2xl">For partners</h3>
-				<a class="hover:underline cursor-pointer">How to be a seller</a>
-				<a class="hover:underline cursor-pointer">Rules</a>
-				<a class="hover:underline cursor-pointer">Login</a>
+				<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'how-to-be-a-seller' %}">How to be a seller</a>
+				<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'rules' %}">Rules</a>
 			</div>
 			<div class="col-span-2 flex flex-col">
 				<div>Subscribe to our newsletter:</div>
@@ -165,9 +163,9 @@
 			<div class="flex-col gap-4">
 				<div class="text-base my-4">We are in social networks</div>
 				<div class="flex gap-10">
-					<a href="vk.com" class="hover:text-gray-200" target="_blank">{% fa6_icon 'vk' 'fab fa-2xl' %}</a>
-					<a href="instagram.com" class="hover:text-gray-200" target="_blank">{% fa6_icon 'instagram' 'fab fa-2xl' %}</a>
-					<a href="fb.com" class="hover:text-gray-200" target="_blank">{% fa6_icon 'facebook' 'fab fa-2xl' %}</a>
+					<a href="https://vk.com" class="hover:text-gray-200" target="_blank">{% fa6_icon 'vk' 'fab fa-2xl' %}</a>
+					<a href="https://instagram.com" class="hover:text-gray-200" target="_blank">{% fa6_icon 'instagram' 'fab fa-2xl' %}</a>
+					<a href="https://fb.com" class="hover:text-gray-200" target="_blank">{% fa6_icon 'facebook' 'fab fa-2xl' %}</a>
 				</div>
 			</div>
 			<img class="col-span-2" src="{% static 'webapp/images/logo.png' %}" alt="Placemik" />
