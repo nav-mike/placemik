@@ -156,7 +156,8 @@
 			<div class="col-span-2 flex flex-col">
 				<div>Subscribe to our newsletter:</div>
 				<form class="flex gap-4 pt-2 w-full">
-					<input type="text" placeholder="Enter your email here" class="max-w-sm w-96 bg-transparent border-white placeholder-white placeholder:italic" />
+					{% csrf_token %}
+					{{ newsletterForm }}
 					<button type="submit" class="bg-white text-purple-500 px-6">Subscribe</button>
 				</form>
 			</div>
