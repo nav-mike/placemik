@@ -155,7 +155,7 @@
 			</div>
 			<div class="col-span-2 flex flex-col">
 				<div>Subscribe to our newsletter:</div>
-				<form class="flex gap-4 pt-2 w-full">
+				<form class="flex gap-4 pt-2 w-full" action="{% url 'webapp:newsletter_create' %}" method="POST">
 					{% csrf_token %}
 					{{ newsletterForm }}
 					<button type="submit" class="bg-white text-purple-500 px-6">Subscribe</button>

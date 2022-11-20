@@ -10,4 +10,5 @@ urlpatterns = [
         "products/<int:pk>", views.ProductsDetailView.as_view(), name="products_detail"
     ),
     path("pages/<str:slug>", views.PagesDetailView.as_view(), name="pages_detail"),
+    path("newsletter/", views.CreateNewsletterView.as_view(), name="newsletter_create"),
 ]
