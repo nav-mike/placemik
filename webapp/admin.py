@@ -2,7 +2,16 @@ from django.contrib import admin
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
-from .models import Category, Product, CategoryGroup, Order, OrderItem, Ad, Page
+from .models import (
+    Category,
+    Product,
+    CategoryGroup,
+    Order,
+    OrderItem,
+    Ad,
+    Page,
+    Newsletter,
+)
 
 
 class CategoryGroupResource(resources.ModelResource):
@@ -68,6 +77,15 @@ class PageAdmin(ImportExportModelAdmin):
     resource_class = PageResource
 
 
+class NewsletterResource(resources.ModelResource):
+    class Meta:
+        model = Newsletter
+
+
+class NewsletterAdmin(ImportExportModelAdmin):
+    resource_class = NewsletterResource
+
+
 admin.site.register(CategoryGroup, CategoryGroupAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
@@ -75,3 +93,4 @@ admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderItem, OrderItemAdmin)
 admin.site.register(Ad, AdAdmin)
 admin.site.register(Page, PageAdmin)
+admin.site.register(Newsletter, NewsletterAdmin)
