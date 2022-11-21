@@ -110,7 +110,6 @@
 				</div>
 				<a href="{% url 'webapp:index' %}"><img src="{% static 'webapp/images/brand.png' %}" alt="Placemik" /></a>
 				<form class="border-purple-500 border-2 flex-1 flex" action="{% url 'webapp:products' %}" method="GET">
-					{% csrf_token %}
 					{{ textSearchForm }}
 					<button class="px-4" type="submit">{% fa6_icon 'magnifying-glass' 'fa-solid fa-xl' %}</button>
 				</form>
