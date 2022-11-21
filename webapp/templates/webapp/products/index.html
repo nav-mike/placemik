@@ -7,8 +7,15 @@
 
 {% block content %}
 <div class="container mx-auto my-4 flex flex-col gap-4">
-  <h1 class="text-2xl">All Products</h1>
+  {% if request.GET.category %}
+    <h1 class="text-2xl font-bold">Products in "{{ category.name }}"</h1>
+  {% else %}
+    <h1 class="text-2xl">All Products</h1>
+  {% endif %}
 
+  {% if request.GET.category %}
+    <a href="{% url 'webapp:products' %}" class="cursor-pointer hover:underline">Show All</a>
+  {% endif %}
   <div class="grid grid-rows-2 grid-cols-6 gap-4">
     {% for item in products %}
       {% include "webapp/snippets/product_snippet.html" with id=item.id image_url=item.image_url name=item.name price=item.price description=item.description category=item.category.name %}

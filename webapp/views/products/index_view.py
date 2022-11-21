@@ -1,4 +1,5 @@
 from django.views.generic import ListView
+from webapp.models.category import Category
 from webapp.models.product import Product
 
 
@@ -16,3 +17,13 @@ class IndexView(ListView):
             queryset = queryset.filter(category_id=int(self.request.GET["category"]))
 
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        if self.request.GET.get("category"):
+            context["category"] = Category.objects.get(
+                pk=int(self.request.GET["category"])
+            )
+
+        return context
