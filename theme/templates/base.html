@@ -109,16 +109,11 @@
 					{% endfor %}
 				</div>
 				<a href="{% url 'webapp:index' %}"><img src="{% static 'webapp/images/brand.png' %}" alt="Placemik" /></a>
-				<div class="border-purple-500 border-2 flex-1 flex">
-					<select class="border-0 h-full bg-purple-100">
-						<option value="0">All categories</option>
-						{% for group in categoryGroups %}
-							<option value="{{group.id}}">{{group.name}}</option>
-						{% endfor %}
-					</select>
-					<input class="flex-1 focus:outline-0 px-4" />
-					<button class="px-4">{% fa6_icon 'magnifying-glass' 'fa-solid fa-xl' %}</button>
-				</div>
+				<form class="border-purple-500 border-2 flex-1 flex" action="{% url 'webapp:products' %}" method="GET">
+					{% csrf_token %}
+					{{ textSearchForm }}
+					<button class="px-4" type="submit">{% fa6_icon 'magnifying-glass' 'fa-solid fa-xl' %}</button>
+				</form>
 				<div class="flex justify-end gap-10 items-center">
 					<a>{% fa6_icon 'user' 'fa-regular fa-xl' %}</a>
 					<a>
