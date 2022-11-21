@@ -102,7 +102,7 @@
 								x-transition
 							>
 								{% for category in group.categories.all %}
-									<a class="hover:underline cursor-pointer">{{ category.name }}</a>
+									<a class="hover:underline cursor-pointer" href="{% url 'webapp:products' %}?category={{ category.id }}">{{ category.name }}</a>
 								{% endfor %}
 							</div>
 						</div>
