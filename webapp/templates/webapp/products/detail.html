@@ -76,14 +76,14 @@
   </div>
 </div>
 
-<div class="grid grid-rows-1 grid-cols-5 gap-4 m-4">
+<div class="grid grid-rows-1 grid-cols-5 gap-4 m-4 w-full">
   {% for item in see_also %}
     {% include "webapp/snippets/small_product_snippet.html" with id=item.id image_url=item.image_url name=item.name price=item.price %}
   {% endfor %}
 </div>
 
-<div class="flex flex-row gap-4 m-4">
-  <div class="flex flex-col gap-4">
+<div class="flex flex-row gap-4 m-4 w-full">
+  <div class="flex flex-col gap-4 flex-1">
     <div class="flex flex-col gap-4 m-4" id="description">
       <h2 class="text-2xl">Description</h2>
       <p class="text-justify">{{ product.description }}</p>
