@@ -13,7 +13,7 @@
   </p>
   <a class="px-4 italic text-sm hover:underline cursor-pointer">{{ category }}</a>
   <p class="overflow-auto px-4 text-justify flex-1">{{ description }}</p>
-  <form class="flex">
+  <form class="flex" action="{% url 'webapp:order_item_create' %}" method="POST">
     {% csrf_token %}
     <input type="hidden" name="product_id" value="{{ id }}" />
     <button

@@ -11,4 +11,5 @@ urlpatterns = [
     ),
     path("pages/<str:slug>", views.PagesDetailView.as_view(), name="pages_detail"),
     path("newsletter/", views.CreateNewsletterView.as_view(), name="newsletter_create"),
+    path("order_item/", views.OrderItemCreateView.as_view(), name="order_item_create"),
 ]
