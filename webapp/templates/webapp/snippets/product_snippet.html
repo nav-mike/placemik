@@ -13,10 +13,14 @@
   </p>
   <a class="px-4 italic text-sm hover:underline cursor-pointer">{{ category }}</a>
   <p class="overflow-auto px-4 text-justify flex-1">{{ description }}</p>
-  <button
-    class="py-2 m-4 cursor-pointer"
-    :class="showMenu ? 'bg-gradient-to-r from-pink-500 hover:from-pink-700 via-purple-500 hover:via-purple-700 to-indigo-500 hover:to-indigo-700 text-white' : 'bg-white text-white'"
-  >
-    Add to Cart
-  </button>
+  <form class="flex">
+    {% csrf_token %}
+    <input type="hidden" name="product_id" value="{{ id }}" />
+    <button
+      class="flex-1 py-2 m-4 cursor-pointer"
+      :class="showMenu ? 'bg-gradient-to-r from-pink-500 hover:from-pink-700 via-purple-500 hover:via-purple-700 to-indigo-500 hover:to-indigo-700 text-white' : 'bg-white text-white'"
+    >
+      Add to Cart
+    </button>
+  </form>
 </div>
