@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load fontawesome_6 %}
+
+{% block title %}Your cart{% endblock %}
+
+{% block content %}
+  <div class="container mx-auto my-4 flex flex-col gap-4 flex-1">
+    <h1 class="text-2xl">Your cart</h1>
+
+    {% if cart %}
+      <div class="grid grid-cols-4 gap-4 w-full h-full">
+        {% for item in cart %}
+          <div>{{ item.product.name }}</div>
+          <div>{{ item.quantity }}</div>
+          <div>${{ item.price|floatformat:-2 }}</div>
+          <div>
+            <button>delete</button>
+          </div>
+        {% endfor %}
+        <div class="col-span-2 font-bold">TOTAL:</div>
+        <div class="col-span-2">${{ cart_total|floatformat:-2 }}</div>
+      </div>
+
+      <div class="flex justify-end">
+        <a class="btn btn-primary cursor-pointer hover:underline">Login to checkout</a>
+      </div>
+    {% else %}
+      <p class="text-center">Your cart is empty</p>
+    {% endif %}
+  </div>
+{% endblock %}

@@ -6,11 +6,13 @@ from webapp.models import OrderItem, Product
 
 
 def categories(request):
+    items_list = cart(request)
     return {
         "categoryGroups": CategoryGroup.objects.all().prefetch_related("categories"),
         "newsletterForm": NewsletterForm(),
         "textSearchForm": TextSearchForm(initial=request.GET),
-        "cart": cart(request),
+        "cart": items_list,
+        "cart_total": sum(item.price for item in items_list),
     }
 
 
