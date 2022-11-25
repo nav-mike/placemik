@@ -36,7 +36,7 @@
 
     <form class="flex" action="{% url 'webapp:order_item_create' %}" method="POST">
       {% csrf_token %}
-      <input type="hidden" name="product" value="{{ product.id }}">
+      <input type="hidden" name="product_id" value="{{ product.id }}">
       <button class="flex-1 bg-blue-500 text-white p-2 rounded">Add to cart</button>
     </form>
 
