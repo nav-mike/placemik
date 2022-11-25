@@ -15,9 +15,11 @@
           <div>{{ item.product.name }}</div>
           <div>{{ item.quantity }}</div>
           <div>${{ item.price|floatformat:-2 }}</div>
-          <div>
+          <form action="{% url 'webapp:order_item_delete' item.product_id %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{ item.product_id }}">
             <button>delete</button>
-          </div>
+          </form>
         {% endfor %}
         <div class="col-span-2 font-bold">TOTAL:</div>
         <div class="col-span-2">${{ cart_total|floatformat:-2 }}</div>
