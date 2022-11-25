@@ -97,24 +97,7 @@
       <h2 class="text-2xl">Reviews ({{ product.reviews.count }})</h2>
 
       <form class="flex flex-col gap-2">
-        <div class="flex flex-col gap-2">
-          <label for="rating">Rating</label>
-          <select name="rating" id="rating" class="rounded-md">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5" selected>5</option>
-          </select>
-        </div>
-        <div class="flex flex-col gap-2">
-          <label for="user_name">Name</label>
-          <input type="text" name="user_name" id="user_name" cols="10" rows="3" class="rounded-md" />
-        </div>
-        <div class="flex flex-col gap-2">
-          <label for="review">Review</label>
-          <textarea name="review" id="review" cols="10" rows="3" class="rounded-md"></textarea>
-        </div>
+        {{ review_form }}
         <button class="bg-blue-500 text-white p-2 rounded">Submit</button>
       </form>
 

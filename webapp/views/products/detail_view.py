@@ -1,4 +1,5 @@
 from django.views.generic import DetailView
+from webapp.forms import ReviewForm
 from webapp.models.product import Product
 from webapp.models import Ad
 
@@ -15,4 +16,7 @@ class DetailView(DetailView):
             category_id=context["product"].category_id
         ).exclude(id=int(self.kwargs["pk"]))[:5]
         context["ads"] = Ad.objects.order_by("?")[:4]
+        context["review_form"] = ReviewForm(
+            initial={"product_id": self.kwargs["pk"], "rating": 5}
+        )
         return context
