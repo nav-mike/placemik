@@ -19,7 +19,7 @@ def categories(request):
 def cart(request: HttpRequest) -> Array[OrderItem]:
     cart = request.session.get("cart", {})
 
-    if cart["null"]:
+    if "null" in cart:
         request.session["cart"] = {}
         return []
 
