@@ -15,7 +15,7 @@ class ReviewForm(forms.Form):
         label="Name",
         widget=forms.TextInput(attrs={"class": "rounded-md"}),
     )
-    product_id = forms.IntegerField(
+    product = forms.IntegerField(
         label="",
         widget=forms.HiddenInput(),
     )

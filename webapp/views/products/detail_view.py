@@ -17,6 +17,6 @@ class DetailView(DetailView):
         ).exclude(id=int(self.kwargs["pk"]))[:5]
         context["ads"] = Ad.objects.order_by("?")[:4]
         context["review_form"] = ReviewForm(
-            initial={"product_id": self.kwargs["pk"], "rating": 5}
+            initial={"product": self.kwargs["pk"], "rating": 5}
         )
         return context
