@@ -14,7 +14,7 @@ class OrderItem(models.Model):
     )
     quantity = models.IntegerField(default=1)
     price = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0, verbose_name="Цена"
+        max_digits=8, decimal_places=2, default=0, verbose_name="Price"
     )
     order = models.ForeignKey(
         Order,

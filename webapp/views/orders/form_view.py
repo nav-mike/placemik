@@ -15,13 +15,17 @@ class OrderCreateView(FormView):
 
     def form_valid(self, form):
         order = form.save()
-        for item in self.request.session.get("cart", []):
+        cart = self.request.session.get("cart", {})
+        products = Product.objects.filter(pk__in=cart)
+        for product_id, qty in cart.items():
+            product = products.get(pk=product_id)
             OrderItem.objects.create(
                 order=order,
-                product=Product.objects.get(pk=item["product_pk"]),
-                amount=item["amount"],
+                product=product,
+                quantity=qty,
             )
-        self.request.session["cart"] = []
+            order.total_price += qty * product.price
+        self.request.session["cart"] = {}
         return super().form_valid(form)
 
     def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:

@@ -21,6 +21,6 @@ class Order(models.Model):
     def get_total_price(self):
         return sum(item.get_total_price() for item in self.order_items.all())
 
-    def save(self, *args, **kwargs):
-        self.total_price = self.get_total_price()
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     self.total_price = self.get_total_price()
+    #     super().save(*args, **kwargs)

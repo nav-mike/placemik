@@ -1,5 +1,7 @@
 from django import forms
 
+from webapp.models.order import Order
+
 
 class ReviewForm(forms.Form):
     rating = forms.ChoiceField(
@@ -31,7 +33,7 @@ class ReviewForm(forms.Form):
     )
 
 
-class OrderForm(forms.Form):
+class OrderForm(forms.ModelForm):
     user_name = forms.CharField(
         label="Name",
         widget=forms.TextInput(attrs={"class": "rounded-md"}),
@@ -50,6 +52,7 @@ class OrderForm(forms.Form):
     )
     user_comment = forms.CharField(
         label="Comment",
+        required=False,
         widget=forms.Textarea(
             attrs={
                 "class": "rounded-md",
@@ -58,3 +61,13 @@ class OrderForm(forms.Form):
             }
         ),
     )
+
+    class Meta:
+        model = Order
+        fields = [
+            "user_name",
+            "user_email",
+            "user_phone",
+            "user_address",
+            "user_comment",
+        ]
