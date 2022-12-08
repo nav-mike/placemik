@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load fontawesome_6 %}
+
+{% block title %}Your cart{% endblock %}
+
+{% block content %}
+  <div class="container mx-auto my-4 flex flex-col gap-4 flex-1">
+    <h1 class="text-2xl">Create the order</h1>
+    <h2 class="text-2xl">Your cart:</h2>
+
+    <div class="grid grid-cols-4 gap-4 w-full h-full">
+      {% for item in cart %}
+        <div>{{ item.product.name }}</div>
+        <div>{{ item.quantity }}</div>
+        <div>${{ item.price|floatformat:-2 }}</div>
+        <form action="{% url 'webapp:order_item_delete' item.product_id %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="product_id" value="{{ item.product_id }}">
+          <button>delete</button>
+        </form>
+      {% endfor %}
+      <div class="col-span-2 font-bold">TOTAL:</div>
+      <div class="col-span-2">${{ cart_total|floatformat:-2 }}</div>
+
+      <form>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="bg-blue-500 text-white p-2 rounded">Create order</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
