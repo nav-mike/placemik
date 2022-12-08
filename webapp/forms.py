@@ -29,3 +29,32 @@ class ReviewForm(forms.Form):
             }
         ),
     )
+
+
+class OrderForm(forms.Form):
+    user_name = forms.CharField(
+        label="Name",
+        widget=forms.TextInput(attrs={"class": "rounded-md"}),
+    )
+    user_email = forms.EmailField(
+        label="Email",
+        widget=forms.EmailInput(attrs={"class": "rounded-md"}),
+    )
+    user_phone = forms.CharField(
+        label="Phone",
+        widget=forms.TextInput(attrs={"class": "rounded-md"}),
+    )
+    user_address = forms.CharField(
+        label="Address",
+        widget=forms.TextInput(attrs={"class": "rounded-md"}),
+    )
+    user_comment = forms.CharField(
+        label="Comment",
+        widget=forms.Textarea(
+            attrs={
+                "class": "rounded-md",
+                "rows": 3,
+                "cols": 10,
+            }
+        ),
+    )
