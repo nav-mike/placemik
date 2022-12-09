@@ -20,4 +20,7 @@ urlpatterns = [
     ),
     path("cart/", views.CartView.as_view(), name="cart_detail"),
     path("order/", views.OrderCreateView.as_view(), name="order_create"),
+    path(
+        "success/<uuid:pk>", views.SuccessPaymentView.as_view(), name="success_payment"
+    ),
 ]

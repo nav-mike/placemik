@@ -56,7 +56,9 @@ class OrderCreateView(FormView):
             line_items=line_items,
             payment_method_types=["card"],
             mode="payment",
-            success_url=self.request.build_absolute_uri(reverse_lazy("webapp:index")),
+            success_url=self.request.build_absolute_uri(
+                reverse_lazy("webapp:success_payment", kwargs={"pk": order.pk})
+            ),
             cancel_url=self.request.build_absolute_uri(reverse_lazy("webapp:index")),
         )
         return session.url
