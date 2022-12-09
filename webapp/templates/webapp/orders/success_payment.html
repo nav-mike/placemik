@@ -1,1 +1,36 @@
-<h1>Success payment</h1>
+{% extends "base.html" %}
+
+{% load static %}
+{% load fontawesome_6 %}
+{% load get_range %}
+{% load delivery_date %}
+
+{% block title %}Success payment - {{ order.pk }}{% endblock %}
+
+{% block content %}
+<div class="p-4 m-4">
+  <h1 class="text-2xl">Success payment</h1>
+
+  <div class="mt-4">
+    <p class="text-lg">Thank you for your order!</p>
+    <p class="text-lg">Your order number is {{ order.pk }}.</p>
+  </div>
+
+  <div class="mt-4">
+    <p class="text-lg">Your order will be delivered to {{ order.user_address }}.</p>
+  </div>
+
+  <div class="mt-4">
+    <p class="text-lg">Order details:</p>
+    <div class="grid grid-cols-4 gap-4 w-full h-full">
+        {% for item in order.order_items.all %}
+          <div>{{ item.product.name }}</div>
+          <div>{{ item.quantity }}</div>
+          <div>${{ item.price|floatformat:-2 }}</div>
+        {% endfor %}
+        <div class="col-span-2 font-bold">TOTAL:</div>
+        <div>${{ order.get_total_price|floatformat:-2 }}</div>
+      </div>
+  </div>
+</div>
+{% endblock %}

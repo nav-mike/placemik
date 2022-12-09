@@ -25,6 +25,7 @@ class OrderCreateView(FormView):
                 quantity=qty,
             )
             order.total_price += qty * product.price
+        order.save()
         self.request.session["cart"] = {}
         self.success_url = self.stripe_url_generation(order)
         return super().form_valid(form)
