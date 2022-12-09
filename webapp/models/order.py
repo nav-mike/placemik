@@ -1,9 +1,9 @@
+import uuid
 from django.db import models
-
-from .product import Product
 
 
 class Order(models.Model):
+    id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
     user_name = models.CharField(max_length=50, default="Anonymous")
     user_email = models.EmailField(max_length=50, default="")
     user_phone = models.CharField(max_length=50, default="")
@@ -20,7 +20,3 @@ class Order(models.Model):
 
     def get_total_price(self):
         return sum(item.get_total_price() for item in self.order_items.all())
-
-    # def save(self, *args, **kwargs):
-    #     self.total_price = self.get_total_price()
-    #     super().save(*args, **kwargs)
