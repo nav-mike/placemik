@@ -71,3 +71,18 @@ class OrderForm(forms.ModelForm):
             "user_address",
             "user_comment",
         ]
+
+
+class SignUpForm(forms.Form):
+    email = forms.EmailField(
+        label="Email",
+        widget=forms.EmailInput(attrs={"class": "rounded-md"}),
+    )
+    password = forms.CharField(
+        label="Password",
+        widget=forms.PasswordInput(attrs={"class": "rounded-md"}),
+    )
+    password2 = forms.CharField(
+        label="Password confirmation",
+        widget=forms.PasswordInput(attrs={"class": "rounded-md"}),
+    )
