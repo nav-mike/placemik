@@ -60,6 +60,8 @@ class OrderCreateView(FormView):
             success_url=self.request.build_absolute_uri(
                 reverse_lazy("webapp:success_payment", kwargs={"pk": order.pk})
             ),
-            cancel_url=self.request.build_absolute_uri(reverse_lazy("webapp:index")),
+            cancel_url=self.request.build_absolute_uri(
+                reverse_lazy("webapp:fail_payment", kwargs={"pk": order.pk})
+            ),
         )
         return session.url

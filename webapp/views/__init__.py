@@ -8,3 +8,4 @@ from .carts import DetailView as CartView
 from .reviews.create_view import CreateRewievView
 from .orders.form_view import OrderCreateView
 from .orders.success_payment_view import SuccessPaymentView
+from .orders.fail_payment_view import FailPaymentView

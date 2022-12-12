@@ -23,4 +23,5 @@ urlpatterns = [
     path(
         "success/<uuid:pk>", views.SuccessPaymentView.as_view(), name="success_payment"
     ),
+    path("fail/<uuid:pk>", views.FailPaymentView.as_view(), name="fail_payment"),
 ]
