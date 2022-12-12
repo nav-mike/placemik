@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm, UsernameField
 
 from webapp.models.order import Order
 
@@ -84,5 +85,16 @@ class SignUpForm(forms.Form):
     )
     password2 = forms.CharField(
         label="Password confirmation",
+        widget=forms.PasswordInput(attrs={"class": "rounded-md"}),
+    )
+
+
+class LoginForm(AuthenticationForm):
+    email = forms.EmailField(
+        label="Email",
+        widget=forms.EmailInput(attrs={"class": "rounded-md"}),
+    )
+    password = forms.CharField(
+        label="Password",
         widget=forms.PasswordInput(attrs={"class": "rounded-md"}),
     )

@@ -44,7 +44,7 @@
 							<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'customer-security' %}">Customer security</a>
 							<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'payments' %}">Payments</a>
 							<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'how-to-use' %}">How to use</a>
-							<a class="hover:underline cursor-pointer">Account registration</a>
+							<a class="hover:underline cursor-pointer" href="{% url 'webapp:login' %}">Account registration</a>
 						</div>
 					</div>
 					<div x-data="{ show: false }">
@@ -114,7 +114,9 @@
 					<button class="px-4" type="submit">{% fa6_icon 'magnifying-glass' 'fa-solid fa-xl' %}</button>
 				</form>
 				<div class="flex justify-end gap-10 items-center">
-					<a>{% fa6_icon 'user' 'fa-regular fa-xl' %}</a>
+					<a href="{% url 'webapp:login' %}">
+						{% fa6_icon 'user' 'fa-regular fa-xl' %}
+					</a>
 					<a>
 						{% fa6_icon 'heart' 'fa-solid fa-xl' %}
 					</a>
@@ -135,7 +137,7 @@
 				<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'customer-security' %}">Customer security</a>
 				<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'payments' %}">Payments</a>
 				<a class="hover:underline cursor-pointer" href="{% url 'webapp:pages_detail' 'how-to-use' %}">How to use</a>
-				<a class="hover:underline cursor-pointer">Account registration</a>
+				<a class="hover:underline cursor-pointer" href="{% url 'webapp:login' %}">Account registration</a>
 			</div>
 			<div class="flex flex-col">
 				<h3 class="text-2xl">About</h3>

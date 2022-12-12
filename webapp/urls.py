@@ -1,4 +1,7 @@
-from django.urls import path
+from django.urls import include, path
+from django.contrib.auth import views as auth_views
+
+from webapp.forms import LoginForm
 
 from . import views
 
@@ -24,4 +27,12 @@ urlpatterns = [
         "success/<uuid:pk>", views.SuccessPaymentView.as_view(), name="success_payment"
     ),
     path("fail/<uuid:pk>", views.FailPaymentView.as_view(), name="fail_payment"),
+    path(
+        "auth/login/",
+        auth_views.LoginView.as_view(
+            authentication_form=LoginForm,
+        ),
+        name="login",
+    ),
+    path("auth/", include("django.contrib.auth.urls")),
 ]
